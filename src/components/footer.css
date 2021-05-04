@@ -1,0 +1,17 @@
+footer{
+    background-color: rgb(48, 47, 47);
+    width: 100%;
+    padding: 10px;
+}
+.footer-list .footer-items{
+    color: white;
+    display: inline;
+    padding: 10px;
+    border: solid white 2px;
+    margin: 10px;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
