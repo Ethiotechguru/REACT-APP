@@ -7,7 +7,7 @@
     margin          : 1rem 0;
     border-radius   : 12px;
     background-color: #4b4b4b;
-    box-shadow: white 5px 5px 15px;
+    box-shadow: rgb(175, 169, 169) 5px 5px 15px;
 }
 .item-description{
     display        : flex;

@@ -8,7 +8,7 @@ function ExpenseDate(props) {
     return React.createElement(
         'div', { className: 'date' }, 
         React.createElement('div', {}, month), 
-        React.createElement('div', {}, day), 
+        React.createElement('h3', {}, day), 
         React.createElement('div', {}, year)
     )
     // return(

@@ -1,11 +1,10 @@
 import './ExpenseForm.css';
 import React, { useState } from 'react';
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
     const [title, setTitle] = useState('');
     const [amount, setAmount] = useState('');
     const [date, setDate] = useState('');
-
     const titleChangeHandler = (e) => {
         setTitle(e.target.value);
     }
@@ -17,12 +16,13 @@ const ExpenseForm = () => {
     })
     const submitHandler = (e)=>{
         e.preventDefault();
+        
         const expenseData = {
-            item:title,
-            cost:amount,
-            date:new Date(date)
+            itemDesc:title,
+            itemCost:amount,
+            date:new Date(date),
         }
-        console.log(expenseData);
+        props.onData(expenseData)
         setTitle('');
         setAmount('');
         setDate('');
@@ -32,23 +32,23 @@ const ExpenseForm = () => {
             <div className="new-expense__controls">
                 <div className="new-expense__control">
                     <label>Title</label>
-                    <input type="text" value={title} onChange={titleChangeHandler} />
+                    <input required type="text" value={title} onChange={titleChangeHandler} />
                 </div>
                 <div className="new-expense__control">
                     <label>Amount</label>
-                    <input type="number" value = {amount} min="0.01" step="0.01" onChange={amountChangeHandler} />
+                    <input required type="number" value={amount} min="0.01" step="0.01" onChange={amountChangeHandler} />
                 </div>
                 <div className="new-expense__control">
                     <label>Date</label>
-                    <input type="date" value={date} min="2019-01-01" max="2022-12-31" onChange={dateChangeHandler} />
+                    <input required type="date" value={date} min="2000-01-01" max="2022-12-31" onChange={dateChangeHandler} />
                 </div>
             </div>
             <div className="new-expense__actions">
                 <button type="submit">Add Expense</button>
+                <button type='button' onClick={props.onCancel}>Cancel</button>
             </div>
+            
         </form>
     )
 }
-
-
 export default ExpenseForm;

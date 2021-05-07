@@ -1,10 +1,20 @@
-import ExpenseItem from './ExpenseItem';
+import React, {useState} from 'react';
+import ExpensesFilter from './ExpensesFilter';import ExpensesList from './ExpensesList';
+import ExpensesChart from './ExpensesChart';
 function Practice(props) {
+    const [selectedYear, setSelectedYear] = useState('2020');
+    function selectedYearHandler(selected_year) {
+        setSelectedYear(selected_year);
+        console.log(selected_year)
+    }
+    const filteredExpenses = props.items.filter(ele=>{
+        return ele.date.getFullYear().toString() === selectedYear;
+    })
     return(
         <div>
-            <ExpenseItem item={props.items[0].itemDesc} cost={props.items[0].itemCost} date={props.items[0].date} />
-            <ExpenseItem item={props.items[1].itemDesc} cost={props.items[1].itemCost} date={props.items[1].date} />
-            <ExpenseItem item={props.items[2].itemDesc} cost={props.items[2].itemCost} date={props.items[2].date} />
+            <ExpensesFilter selected={selectedYear} onSelection={selectedYearHandler}/>
+            <ExpensesChart expenses={filteredExpenses}/>
+            <ExpensesList items={filteredExpenses}/>
         </div>
     )
 }
